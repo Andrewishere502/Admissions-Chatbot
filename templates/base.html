@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block stylesheets %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Personal CSS -->
+        <link rel="stylesheet" href="static/css/control.css">
+        {% endblock %}
+
+        <title>{% block title %}{% endblock %} - Control Panel</title>
+    </head>
+    <body>
+        <!-- start Navbar -->
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <!-- Start alerts -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message[1] }}">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        {{ message[0] }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <!-- End alerts -->
+            <div class="navbar-brand">{% block nav_title %}{% endblock %} - Control Panel</div>
+            {% if session.get("username") != None %}
+            <ul class="navbar-nav navbar-expand-lg">
+                <li>
+                    <a class="link-button tab {{ is_active(open_tab, 'cp_question_log') }}" href="{{ url_for('cp_question_log') }}">Question Log</a>
+                </li>
+                <li>
+                    <a class="link-button tab {{ is_active(open_tab, 'cp_email_list') }}" href="{{ url_for('cp_email_list') }}">Email List</a>
+                </li>
+                {% if session.get("is_master_admin") %}
+                    <li>
+                        <a class="link-button tab {{ is_active(open_tab, 'cp_users') }}" href="{{ url_for('cp_users') }}">Admin User Management</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a class="link-button tab {{ is_active(open_tab, 'cp_feedback') }}" href="{{ url_for('cp_feedback') }}">Feedback</a>
+                </li>
+            </ul>
+            <div class="navbar-nav">
+                <div class="nav-item">{{ session["username"] }}</div>
+                <a class="nav-item" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+            {% endif %}
+        </nav>
+        <!-- End navbar -->
+        
+        {% block body %}
+        {% endblock %}
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!------ start chat resources ----------> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/chat.css">
+        <script src="static/js/chat.js"></script>
+        <!------ end chat resources ---------->
+    </head>
+
+    <body>
+        <button class="open-button" onclick="openForm()">{{ translate("en", "Chat", language) }}</button> 
+
+        <div class="chat-popup" id="myForm">
+            <form class="form-container" action="{{ url_for(redirect_func_name, language=language, return_to_func=return_to_func) }}" method="POST">
+                {% block body %}
+                <a style="float: right;" href="{{ url_for('set_language', language=language, return_to_func=go_back) }}">
+                    <img src="/static/images/cog.jpg">
+                </a>
+                <a style="float: right; padding-right: 30px;" href="{{ url_for('submit_feedback', language=language, return_to_func=go_back)}}">
+                    {{ translate("en", "Submit Feedback", language) }}
+                </a>
+                {% endblock %}
+                <button type="submit" class="btn send">{{ translate("en", "Send", language) }}</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">{{ translate("en", "Close", language) }}</button>
+            </form>
+        </div>
+    </body>
+    {% block script %}
+    {% endblock %}
+</html>

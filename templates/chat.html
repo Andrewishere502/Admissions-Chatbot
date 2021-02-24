@@ -1,0 +1,30 @@
+{% extends "chatbase.html" %}
+
+{% block body %}
+    {{ super() }}
+    <h1 style="display: inline-block;">AdmBot</h1>
+
+    <div class="main-box messages">
+        {% for i in range(msg_log_len) %}
+            <div class="message-bubble {{ msg_log[i][0] }}" {% if i == msg_log_len - 1 %}id="last-chat"{% endif %}>
+                {% if msg_log[i][0] == 'human' %}
+                    <b>{{ translate("en", "you", language) }}</b>
+                {% else %}
+                    <b>{{ translate("en", msg_log[i][0], language) }}</b> 
+                {% endif %}
+                <br>
+                <!-- translates messages into the current language -->
+                {{ translate(None, msg_log[i][1], language) }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <textarea placeholder="{{ translate('en', 'Type message...', language) }}" name="msg" required></textarea>
+{% endblock %}
+
+{% block script %}
+    <script>
+        // scrolls to the bottom of messages
+        document.getElementById('last-chat').scrollIntoView();
+    </script>
+{% endblock %}
