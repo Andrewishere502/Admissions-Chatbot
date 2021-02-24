@@ -1,0 +1,19 @@
+{% extends "chatbase.html" %}
+
+{% block body %}
+    <h3>{{ translate("en", "Select language:", language) }}</h3>
+
+    <div class="main-box">
+        <input type="radio" id="en" name="language" value="en" {{ language_checked(language, 'en') }}>
+        <label for="en">English</label>
+        <br>
+        <input type="radio" id="es" name="language" value="es" {{ language_checked(language, 'es') }}>
+        <label for="es">Español</label>
+        <br>
+        <input type="radio" id="ko" name="language" value="ko" {{ language_checked(language, 'ko') }}>
+        <label for="ko">한국어</label>
+        <br>
+        <input type="radio" id="zh" name="language" value="zh" {{ language_checked(language, 'zh') }}>
+        <label for="zh">中文</label>
+    </div>
+{% endblock %}

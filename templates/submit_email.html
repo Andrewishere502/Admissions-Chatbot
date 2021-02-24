@@ -1,0 +1,23 @@
+{% extends "chatbase.html" %}
+
+{% block body %}
+    {{ super() }}
+    <h3>{{ translate("en", "Submit Email", language) }}:</h3>
+
+    <input name="email" type="email" placeholder="{{ translate('en', 'Your email', language) }}" required>
+    <br>
+    <input name="first_name" type="text" placeholder="{{ translate('en', 'Your first name', language) }}">
+    <br>
+    <input name="last_name" type="text" placeholder="{{ translate('en', 'Your last name', language) }}">
+    <a href="{{ url_for('terms_and_conditions', language=language, return_to_func=go_back) }}">
+        {{ translate("en", "Terms and conditions", language) }}
+    </a>
+    <div class="consent-box">
+        <input type="checkbox" required>{{ translate("en", "I have read and agree to the terms & conditions specified above", language) }}
+    </div>
+    <br>
+    <div class="center-children">
+        <a class="continue-without-email" href="{{ url_for('start_convo', language=language) }}">{{ translate("en", "Continue without email", language) }}</a>
+    </div>
+    <br>
+{% endblock %}

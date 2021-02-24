@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Question Log{% endblock %}
+{% block nav_title %}Question Log{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <div class="main-container">
+        <!-- Filter bar -->
+        <form class="filter-bar" action="{{ url_for('cp_filter_question_log') }}" method="POST">
+            <input class="filter-option" type="radio" id="unknown-type" name="filter" value="unknown: TYPE MISSING">
+            <label for="unknown-type">Unknown type</label>
+            <input class="filter-option" type="radio" id="unknown-answer" name="filter"  value="unknown: NO ANSWER">
+            <label for="unknown-answer">Unknown answer</label>
+            <input class="filter-option" type="radio" id="known" name="filter" value="known">
+            <label for="known">Only Known</label>
+            <input class="filter-option" type="radio" id="all" name="filter" value="all">
+            <label for="all">All</label>
+            <button class="submit-filter" type="submit">Filter</button>
+        </form>
+        <!-- End filter bar -->
+        <!-- Data table -->
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="column-header first" scope="col">id</th>
+                    <th class="column-header" scope="col">Question</th>
+                    <th class="column-header" scope="col">Answer</th>
+                    <th class="column-header" scope="col">Language</th>
+                    <th class="column-header" scope="col">Date Asked</th>
+                    <th class="column-header" scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for id, question, answer, language, date in interaction_data %}
+                    <tr>
+                        <th class="row-header first" scope="row">{{ id }}</th>
+                        <td>{{ question }}</td>
+                        <td>{{ answer }}</td>
+                        <td>{{ language }}</td>
+                        <td>{{ date }}</td>
+                        <td>
+                            {% if session.get("is_master_admin") %}
+                                <a href="{{ url_for('delete_item', table_name='userBotInteraction', item_id=id, redirect_func_name='cp_question_log') }}">DELETE</a>
+                            {% else %}
+                                ~none~
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- End data table -->
+    </div>
+{% endblock %}

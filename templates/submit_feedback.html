@@ -1,0 +1,22 @@
+{% extends "chatbase.html" %}
+
+{% block body %}
+    {{ super() }}
+    <h3>{{ translate("en", "Submit Feedback", language) }}:</h3>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <input name="feedback_text" type="text" placeholder="{{ translate('en', 'Type feedback here...', language) }}">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{{ url_for(return_to_func, language=language) }}">
+        {{ translate("en", "Click here to go back", language) }}
+    </a>
+    <br>
+{% endblock %}

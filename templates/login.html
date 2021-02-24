@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block nav_title %}Login{% endblock %}
+
+{% block stylesheets %}
+    {{ super() }}
+    <!-- CSS from https://github.com/ismailkraou/simplelogin
+    and modified by me -->
+    <link rel="stylesheet" href="static/css/form.css">
+{% endblock %}
+
+{% block body %}
+    <div class="main-box">
+        <div class="box-logo">
+            <div class="logo clearfix">
+                <h1>
+                    Log in:
+                </h1>
+                Log in to access the control panel for the admissions chatbot.
+            </div>
+        </div> <!--End Box-Logo-->
+        <div class="box-form">
+            <form action="{{ url_for('login_process') }}", method="POST">
+                <input name="username" type="text" placeholder="Username" value="{{ session['username'] }}" required>
+                <br>
+                <input name="password" type="password" placeholder="Password" required>
+                <br>
+                <input type="submit" value="LOGIN">
+            </form>
+        </div> <!--End form-->
+    </div> <!--End main-box-->
+{% endblock %}
