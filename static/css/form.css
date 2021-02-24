@@ -1,0 +1,85 @@
+/* most of the css here is taken from
+https://github.com/ismailkraou/simplelogin */
+
+.clearfix:before,
+.clearfix:after {
+	content:" ";
+	display:table;
+}
+
+.clearfix:after {
+	clear:both;
+}
+
+input {
+	border: none;
+	background: none;
+	margin-bottom: 45px;
+	padding:10px;
+	color: #000000;
+}
+
+/*****************************************/
+
+body {
+	background-color: #7D8592;
+}
+
+.main-box {
+    margin: 100px auto;
+    background-color: #F5F5F5;
+    width: 450px;
+    border-radius: 4px;
+    padding-bottom: 30px;
+}
+
+.box-logo {
+	background-color: #851905;
+	color: #ffffff;
+    padding: 40px;
+    /* styles below curve the top corners of
+    the logo box */
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	margin-bottom: 45px;
+}
+
+.span1 {
+	position: relative;
+	float: left;
+}
+.span2 {
+	position: relative;
+	float: right;
+}
+
+.box-form {
+    text-align: center;
+	padding: 0 85px;
+}
+
+.center-children {
+	text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	border-bottom: 2px solid #C8C8C8;
+	width: 100%;
+}
+
+.bg-check::before {
+	background: #851905;
+	height: 16px;
+	font-weight: bold;
+}
+
+input[type="submit"] {
+	padding: 16px 45px;
+	background: #851905;
+	color: #ffffff;
+	border-radius: 4px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}

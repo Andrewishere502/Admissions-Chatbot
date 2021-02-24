@@ -1,0 +1,107 @@
+.main-container {
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.link-button {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.center-children {
+    text-align: center;
+}
+
+.filter-option {
+    margin-left: 30px;
+}
+
+.submit-filter {
+    margin-left: 50px;
+	border: 2px solid black;
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+.submit-filter:hover {
+    color: #e90404;
+    text-decoration: underline;
+}
+
+a {
+    color: #851905;
+}
+
+a:hover, a.tab.active {
+    color: #e90404;
+    text-decoration: underline;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.blurry-text:not(:hover) {
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+th.first {
+    text-align: center;
+}
+
+th:not(.first), td:not(.first) {
+    text-indent: 5px;
+}
+
+.bottom-link-container {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.open-new-page {
+    border: 2px solid black;
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+
+/* The alert message box.
+(from https://www.w3schools.com/howto/howto_js_alert.asp) */
+.alert {
+    /* padding: 20px; */
+    color: white;
+    /* margin-bottom: 15px */
+}
+
+.alert.green {
+    background-color: #1ca339; /* green */
+}
+
+.alert.orange {
+    background-color: #e8762e; /* orange */
+}
+  
+/* The close button.
+(from https://www.w3schools.com/howto/howto_js_alert.asp) */
+.closebtn {
+    /* margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s; */
+}
+  
+/* When moving the mouse over the close button.
+(from https://www.w3schools.com/howto/howto_js_alert.asp) */
+.closebtn:hover {
+    color: black;
+}

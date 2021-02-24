@@ -1,0 +1,13 @@
+iframe {
+    /* width must be greater than chat box max-width
+    so the box's sides aren't cut off */
+    width: 350px;
+    height: 490px;
+    display: block;
+    position: fixed;
+    z-index: 9;
+    border: none;
+    bottom: 0;
+    right: 15px;
+    background-color: transparent;
+}
